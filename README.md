@@ -3,7 +3,7 @@
 Unlike my calculator this program's Javascript is actually made entirely by me.
 <br>
 <br>
-We love to see people stop stealing people code don't we? Not saying that i won't do it again tho...
+We love to see people stop stealing other people's code don't we? Not saying that i won't do it again tho...
 
 ## About Program
 Writen in HTML, CSS & Javascript.
