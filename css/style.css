@@ -37,18 +37,26 @@ header {
     display: flex;
     flex-direction: column;
 }
+#title {
+    cursor: pointer;
+    z-index: 1000;
+}
 
 #signature {
+    position: relative;
+    opacity: 0;
+    text-align: left;
     font-size: 1.5rem;
-    top: 6.5rem;
-    left: 5rem;
-    display: none;
+    bottom: 3.3rem;
+    left: 1rem;
+    /* display: none; */
+    transition-duration: 500ms;
 }
 
 .score {
     position: relative;
-    bottom: 10rem;
-    height: 10rem;
+    bottom: 13rem;
+    height: 9rem;
     font-family: 'mali';
     font-weight: 600;
     font-style: normal;
@@ -175,7 +183,7 @@ p {
 
 @media (max-width: 600px) {
     .score {
-        height: 10rem;
+        height: 11rem;
     }
 
     .box {

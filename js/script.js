@@ -10,87 +10,87 @@ function boardCheck() {
     if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
         console.log('Top Horizontal');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
         
     } else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
         console.log('Middle Horizontal');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
         console.log('Bottom Horizontal');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
         console.log('Left Vertical');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
         console.log('Middle Vertical');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
         console.log('Right Vertical');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
         console.log('Back Diagonal');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
         console.log('Forward Diagonal');
         userWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (numberofZeros == 0) {
         console.log('Draw');
-        clear();
+        setTimeout(clear, 1000);
     }
 
     if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
         console.log('Top Horizontal');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
         
     } else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
         console.log('Middle Horizontal');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
         console.log('Bottom Horizontal');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
         console.log('Left Vertical');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
         console.log('Middle Vertical');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
         console.log('Right Vertical');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
         console.log('Back Diagonal');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
 
     } else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
         console.log('Forward Diagonal');
         compWin();
-        clear();
+        setTimeout(clear, 1000);
     }
 }
 
@@ -137,7 +137,15 @@ function computer_Play() {
     board[random_Play] = 2
 }
 
+function signatureEasterEgg() {
+    signature.style.opacity = '0';
+    signature.style.bottom = '3.3rem';
+
+}
+
 const userScore = document.getElementById('user-score');
+const title = document.getElementById('title');
+const signature = document.getElementById('signature');
 const compScore = document.getElementById('comp-score');
 const x = '<span class="material-icons" id="x">close</span>'
 const o = '<span class="material-icons" id="o">radio_button_unchecked</span>'
@@ -155,4 +163,10 @@ box.addEventListener('click', () => {
 })
 })
 
-
+title.addEventListener('click', () => {
+    signature.style.opacity = '100';
+    setTimeout(() => {
+        signature.style.bottom = '2.5rem'
+    }, 1);
+    setTimeout(signatureEasterEgg, 2000)
+})
