@@ -107,7 +107,7 @@ p {
 #player-comp {
 	text-align: left;
 	width: 6rem;
-	left: 15.5rem;
+	left: 14.2rem;
 	bottom: 8.6rem;
 	font-size: 2rem;
 }
@@ -132,6 +132,8 @@ p {
 	display: flex;
 	border-bottom: var(--line-thickness) solid var(--line-color);
 	border-top: var(--line-thickness) solid var(--line-color);
+
+	transform: scale(0.95);
 }
 
 /* LINES */
@@ -151,6 +153,8 @@ p {
 	cursor: pointer;
 	font-size: 0;
 	transition: height 800ms ease;
+
+	transform: scale(0.95);
 }
 
 .box {
@@ -175,10 +179,10 @@ h2 {
 	padding: 7rem 4rem;
 }
 
-#draw {
+/* #draw {
 	display: inline;
 	opacity: 100;
-}
+} */
 
 /*#############
 ===============
