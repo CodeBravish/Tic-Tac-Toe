@@ -1,6 +1,6 @@
 function boardCompute(x_Index) {
+	win = 0;
 	board[x_Index] = 1;
-	computer_Play();
 	console.log('Board Array\n' 
 				+'['+ board[0] +']' +'['+ board[1] +']' +'['+ board[2] +']\n'
 				+'['+ board[3] +']' +'['+ board[4] +']' +'['+ board[5] +']\n'
@@ -49,14 +49,19 @@ function boardCheck() {
 		console.log('Forward Diagonal');
 		userWin();
 		setTimeout(clear, 1000);
+	}
 
-	} else if (numberofZeros == 0) {
+	if (win == 1) {
+		return;
+	}
+
+	computer_Play();
+
+	if (numberofZeros == 0) {
 		console.log('Draw');
 		draw();
 		setTimeout(clear, 1000);
-	}
-
-	if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
+	} else if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
 		console.log('Top Horizontal');
 		compWin();
 		setTimeout(clear, 1000);
@@ -99,6 +104,7 @@ function boardCheck() {
 }
 
 function userWin() {
+	win = 1;
 	userScore_Compute = parseInt(userScore.innerText) + 1;
 	userScore.innerText = userScore_Compute;
 
@@ -140,7 +146,7 @@ function compWin() {
 	setTimeout(() => {
 		loseSplash.style.opacity = '100';
 		loseSplash.style.transform = 'rotate(-15deg)'
-	}, 10)
+	}, 350)
 	
 	setTimeout(() => {
 		loseSplash.style.opacity = '0';
@@ -171,7 +177,11 @@ function computer_Play() {
 		return;
 	}
 	if (board[random_Play] === 0) {
-		box[random_Play].innerHTML = o;
+		drawSplash.style.display = 'inline';
+		setTimeout(() => {
+			box[random_Play].innerHTML = o;
+			drawSplash.style.display = 'none';
+		},250)
 		console.log('1st Try - Random Play: ' + random_Play);
 	} else {
 		while (board[random_Play] != 0) {
@@ -180,7 +190,11 @@ function computer_Play() {
 			ntry++;
 			console.log(ntry + ' Try - Random Play: ' + random_Play);
 		}
-		box[random_Play].innerHTML = o;
+		drawSplash.style.display = 'inline';
+		setTimeout(() => {
+			box[random_Play].innerHTML = o;
+			drawSplash.style.display = 'none';
+		},250)
 	}
 	board[random_Play] = 2
 }
@@ -203,8 +217,9 @@ const drawSplash = document.getElementById('draw');
 const x = '<span class="material-icons" id="x">close</span>';
 const o = '<span class="material-icons" id="o">radio_button_unchecked</span>';
 
+var win = 0;
 var board = [0,0,0,0,0,0,0,0,0];
-var numberofZeros = 0;
+var numberofZeros = 9;
 
 box.forEach((box, index) => {
 box.addEventListener('click', () => {
@@ -216,9 +231,9 @@ box.addEventListener('click', () => {
 })
 
 title.addEventListener('click', () => {
-	signature.style.opacity = '100';
+	signature.style.opacity = '0.60';
 	setTimeout(() => {
-		signature.style.bottom = '2.5rem'
+		signature.style.bottom = '2.4rem'
 	}, 1);
 	setTimeout(signatureEasterEgg, 2000)
 })
