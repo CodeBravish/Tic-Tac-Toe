@@ -370,11 +370,10 @@ function computer_Play() {
 		drawSplash.style.display = 'inline';
 		setTimeout(() => {
 			box[random_Play].innerHTML = o;
-			box[random_Play].innerHTML = o;
 			setTimeout (() => {
+				drawSplash.style.display = 'none';
 				box[random_Play].children[0].style.transform = 'scale(5)';
 			}, 20)
-			drawSplash.style.display = 'none';
 		},100)
 		console.log('1st Try - Random Play: ' + random_Play);
 	} else {
@@ -389,8 +388,8 @@ function computer_Play() {
 			box[random_Play].innerHTML = o;
 			setTimeout (() => {
 				box[random_Play].children[0].style.transform = 'scale(5)';
+				drawSplash.style.display = 'none';
 			}, 20)
-			drawSplash.style.display = 'none';
 		},100)
 	}
 	board[random_Play] = 2
