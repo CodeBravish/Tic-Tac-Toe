@@ -131,7 +131,7 @@ function userWin() {
 
 	setTimeout(() => {
 		winSplash.style.opacity = '100';
-		winSplash.style.transform = 'rotate(-15deg)'
+		winSplash.style.transform = 'rotate(-10deg)'
 	}, 10)
 
 	setTimeout(() => {
@@ -148,7 +148,7 @@ function draw() {
 
 	setTimeout(() => {
 		drawSplash.style.opacity = '100';
-		drawSplash.style.transform = 'rotate(-15deg)'
+		drawSplash.style.transform = 'rotate(-10deg)'
 	}, 10)
 
 	setTimeout(() => {
@@ -168,7 +168,7 @@ function compWin() {
 
 	setTimeout(() => {
 		loseSplash.style.opacity = '100';
-		loseSplash.style.transform = 'rotate(-15deg)'
+		loseSplash.style.transform = 'rotate(-10deg)'
 	}, 350)
 
 	setTimeout(() => {
