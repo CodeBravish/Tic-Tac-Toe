@@ -418,9 +418,8 @@ function pointCheck() {
 
 	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
 		return -1;
-	}
 
-	if (numberofZeros == 0) {
+	} else if (numberofZeros == 0) {
 		return 0;
 
 	} else if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
@@ -468,7 +467,7 @@ function ai_Play() {
 	for (let i = 0; i < board.length; i++) {
 		if (board[i] == 0) {
 			board[i] = 2;
-			let movePoints = miniMax(board);
+			let movePoints = miniMax(board, 0, true);
 			board[i] = 0;
 			if (movePoints > best_MovePoints) {
 				best_MovePoints = movePoints;
@@ -489,10 +488,37 @@ function ai_Play() {
 
 function miniMax(board, depth, isMax) {
 	let resultPoint = pointCheck();
-	if (resultPoint != null) {
-		
+	if (resultPoint == 1 || resultPoint == -1 || resultPoint == 0 ) {
+		return resultPoint;
 	}
-	
+
+	if (isMax) {
+		let best_MovePoints = -Infinity;
+		for (let i = 0; i < board.length; i++) {
+			if (board[i] == 0) {
+				board[i] = 2;
+				let movePoints = miniMax(board, depth + 1, true);
+				board[i] = 0;
+				if (movePoints > best_MovePoints) {
+					best_MovePoints = movePoints;
+				}
+			}
+		}
+		return best_MovePoints;
+	} else {
+		let best_MovePoints = Infinity;
+		for (let i = 0; i < board.length; i++) {
+			if (board[i] == 0) {
+				board[i] = 1;
+				let movePoints = miniMax(board, depth + 1, false);
+				board[i] = 0;
+				if (movePoints < best_MovePoints) {
+					best_MovePoints = movePoints;
+				}
+			}
+		}
+		return best_MovePoints;
+	}
 }
 
 function signatureEasterEgg() {
