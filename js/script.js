@@ -63,7 +63,7 @@ function boardCheck() {
 		return;
 	}
 
-	computer_Play();
+	ai_Play();
 
 	if (numberofZeros == 0) {
 		console.log('Draw');
@@ -392,7 +392,107 @@ function computer_Play() {
 			}, 20)
 		},100)
 	}
-	board[random_Play] = 2
+	board[random_Play] = 2;
+}
+
+function pointCheck() {
+	if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
+		return -1;
+	} else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
+		return -1;
+
+	} else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
+		return -1;
+
+	} else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
+		return -1;
+
+	} else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
+		return -1;
+
+	} else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
+		return -1;
+
+	} else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
+		return -1;
+
+	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
+		return -1;
+	}
+
+	if (numberofZeros == 0) {
+		return 0;
+
+	} else if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
+		return 1;
+		
+	} else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
+		return 1;
+
+	} else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
+		return 1;
+
+	} else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
+		return 1;
+
+	} else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
+		return 1;
+
+	} else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
+		return 1;
+
+	} else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
+		return 1;
+
+	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
+		return 1;
+	}
+
+	return null;
+}
+
+function ai_Play() {
+	numberofZeros = 0;
+	let best_MovePoints = -Infinity;
+	let best_Move
+
+	for (let i = 0; i < board.length; i++) {
+		if (board[i] == 0) {
+			numberofZeros++;
+		}
+	}
+	if (numberofZeros == 0) {
+		return;
+	}
+
+	for (let i = 0; i < board.length; i++) {
+		if (board[i] == 0) {
+			board[i] = 2;
+			let movePoints = miniMax(board);
+			board[i] = 0;
+			if (movePoints > best_MovePoints) {
+				best_MovePoints = movePoints;
+				best_Move = i;
+			}
+		}
+	}
+	board[best_Move] = 2;
+	drawSplash.style.display = 'inline';
+		setTimeout(() => {
+			box[best_Move].innerHTML = o;
+			setTimeout (() => {
+				box[best_Move].children[0].style.transform = 'scale(5)';
+				drawSplash.style.display = 'none';
+			}, 20)
+		},100)
+}
+
+function miniMax(board, depth, isMax) {
+	let resultPoint = pointCheck();
+	if (resultPoint != null) {
+		
+	}
+	
 }
 
 function signatureEasterEgg() {
