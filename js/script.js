@@ -453,7 +453,7 @@ function pointCheck() {
 function ai_Play() {
 	numberofZeros = 0;
 	let best_MovePoints = -Infinity;
-	let best_Move
+	var best_Move = 3
 
 	for (let i = 0; i < board.length; i++) {
 		if (board[i] == 0) {
@@ -464,17 +464,22 @@ function ai_Play() {
 		return;
 	}
 
-	for (let i = 0; i < board.length; i++) {
-		if (board[i] == 0) {
-			board[i] = 2;
-			let movePoints = miniMax(board, 0, true);
-			board[i] = 0;
+	for (let x = 0; x < 9; x++) {
+		if (board[x] == 0) {
+			board[x] = 2;
+			console.log('(Outermost-Ai_Play)Board Position: ' + x);
+			let movePoints = miniMax(board, 0, false);
+			console.log('(Outermost-Ai_Play)movePoints: ' + movePoints);
+			board[x] = 0;
 			if (movePoints > best_MovePoints) {
 				best_MovePoints = movePoints;
+				console.log('(Outermost-Ai_Play)Best Points changed to: ' + best_MovePoints);
 				best_Move = i;
+				console.log('Best Move Changed to: ' + x);
 			}
 		}
 	}
+	console.log('Final Best Move is: ' + i);
 	board[best_Move] = 2;
 	drawSplash.style.display = 'inline';
 		setTimeout(() => {
@@ -497,10 +502,13 @@ function miniMax(board, depth, isMax) {
 		for (let i = 0; i < board.length; i++) {
 			if (board[i] == 0) {
 				board[i] = 2;
-				let movePoints = miniMax(board, depth + 1, true);
+				console.log('(Min)Board Position: ' + i);
+				let movePoints = miniMax(board, depth + 1, false);
+				console.log('(Min)movePoints: ' + movePoints);
 				board[i] = 0;
 				if (movePoints > best_MovePoints) {
 					best_MovePoints = movePoints;
+					console.log('(Min)Best Points changed to: ' + best_MovePoints);
 				}
 			}
 		}
@@ -510,10 +518,13 @@ function miniMax(board, depth, isMax) {
 		for (let i = 0; i < board.length; i++) {
 			if (board[i] == 0) {
 				board[i] = 1;
-				let movePoints = miniMax(board, depth + 1, false);
+				console.log('(Max)Board Position: ' + i);
+				let movePoints = miniMax(board, depth + 1, true);
+				console.log('(Max)movePoints: ' + movePoints);
 				board[i] = 0;
 				if (movePoints < best_MovePoints) {
 					best_MovePoints = movePoints;
+					console.log('(Max)Best Points changed to: ' + best_MovePoints);
 				}
 			}
 		}
