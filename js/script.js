@@ -428,9 +428,6 @@ function checkWinner() {
 	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
 		return 10;
 
-	} else if (numberofVirtualZeros == 0) {
-		return 0;
-
 	} else if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
 		return -10;
 
@@ -454,6 +451,9 @@ function checkWinner() {
 
 	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
 		return -10;
+
+	} else if (numberofVirtualZeros == 0) {
+		return 0;
 	}
 
 	return null;
