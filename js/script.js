@@ -396,6 +396,13 @@ function clear() {
 // }
 
 function checkWinner() {
+	numberofVirtualZeros = 0;
+
+	for (let i = 0; i < 9; i++) {
+		if (board[i] == 0) {
+			numberofVirtualZeros++;
+		}
+	}
 
 	if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
 		return 10;	
@@ -421,7 +428,7 @@ function checkWinner() {
 	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
 		return 10;
 
-	} else if (numberofZeros == 0) {
+	} else if (numberofVirtualZeros == 0) {
 		return 0;
 
 	} else if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
@@ -449,7 +456,7 @@ function checkWinner() {
 		return -10;
 	}
 
-	return 999;
+	return null;
 }
 
 function ai_Play() {
@@ -488,37 +495,38 @@ function ai_Play() {
 	board[move] = 2;
 }
 
-function minimax(board, depth, isMaximizing) {
+function minimax(vboard, depth, isMaximizing) {
 	let result = checkWinner();
-	if (result !== 999) {
+	if (result !== null) {
 		return result;
 	}
 
 	if (isMaximizing) {
 		let bestScore = -Infinity
 		for (let i = 0; i < 9; i++) {
-			if (board[i] == 0) {
-				board[i] = 2;
-				let score = minimax(board, depth + 1, false);
-				board[i] = 0;
-				bestScore = (Math.max(score, bestScore)) + (depth+1);
+			if (vboard[i] == 0) {
+				vboard[i] = 2;
+				let score = minimax(vboard, depth + 1, false);
+				vboard[i] = 0;
+				score = score - depth;
+				bestScore = Math.max(score, bestScore);
 				// if (score > bestScore) {
-				// 	bestScore = score;
+				// 	bestScore = score + depth;
 				// }
 			}
 		}
 		return bestScore;
-	} else {
+	} else if (!isMaximizing) {
 		let bestScore = Infinity
 		for (let i = 0; i < 9; i++) {
-			if (board[i] == 0) {
-				board[i] = 1;
-				let score = minimax(board, depth + 1, true);
-				board[i] = 0;
-
-				bestScore = (Math.min(score, bestScore)) - (depth+1);
+			if (vboard[i] == 0) {
+				vboard[i] = 1;
+				let score = minimax(vboard, depth + 1, true);
+				vboard[i] = 0;
+				score = score + depth;
+				bestScore = Math.min(score, bestScore);
 				// if (score < bestScore) {
-				// 	bestScore = score;
+				// 	bestScore = score + depth;
 				// }
 			}
 		}
