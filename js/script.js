@@ -353,109 +353,109 @@ function clear() {
 	board = [0,0,0,0,0,0,0,0,0]
 }
 
-function computer_Play() {
-	var random_Play = Math.floor(Math.random() * 9);
-	numberofZeros = 0;
-	let ntry = 1;
+// function computer_Play() {
+// 	var random_Play = Math.floor(Math.random() * 9);
+// 	numberofZeros = 0;
+// 	let ntry = 1;
 
-	for (let i = 0; i < board.length; i++) {
-		if (board[i] == 0) {
-			numberofZeros++;
-		}
-	}
-	if (numberofZeros == 0) {
-		return;
-	}
-	if (board[random_Play] === 0) {
-		drawSplash.style.display = 'inline';
-		setTimeout(() => {
-			box[random_Play].innerHTML = o;
-			setTimeout (() => {
-				drawSplash.style.display = 'none';
-				box[random_Play].children[0].style.transform = 'scale(5)';
-			}, 20)
-		},100)
-		console.log('1st Try - Random Play: ' + random_Play);
-	} else {
-		while (board[random_Play] != 0) {
-			console.log('Used Number: ' + random_Play);
-			random_Play = Math.floor(Math.random() * 9);
-			ntry++;
-			console.log(ntry + ' Try - Random Play: ' + random_Play);
-		}
-		drawSplash.style.display = 'inline';
-		setTimeout(() => {
-			box[random_Play].innerHTML = o;
-			setTimeout (() => {
-				box[random_Play].children[0].style.transform = 'scale(5)';
-				drawSplash.style.display = 'none';
-			}, 20)
-		},100)
-	}
-	board[random_Play] = 2;
-}
+// 	for (let i = 0; i < board.length; i++) {
+// 		if (board[i] == 0) {
+// 			numberofZeros++;
+// 		}
+// 	}
+// 	if (numberofZeros == 0) {
+// 		return;
+// 	}
+// 	if (board[random_Play] === 0) {
+// 		drawSplash.style.display = 'inline';
+// 		setTimeout(() => {
+// 			box[random_Play].innerHTML = o;
+// 			setTimeout (() => {
+// 				drawSplash.style.display = 'none';
+// 				box[random_Play].children[0].style.transform = 'scale(5)';
+// 			}, 20)
+// 		},100)
+// 		console.log('1st Try - Random Play: ' + random_Play);
+// 	} else {
+// 		while (board[random_Play] != 0) {
+// 			console.log('Used Number: ' + random_Play);
+// 			random_Play = Math.floor(Math.random() * 9);
+// 			ntry++;
+// 			console.log(ntry + ' Try - Random Play: ' + random_Play);
+// 		}
+// 		drawSplash.style.display = 'inline';
+// 		setTimeout(() => {
+// 			box[random_Play].innerHTML = o;
+// 			setTimeout (() => {
+// 				box[random_Play].children[0].style.transform = 'scale(5)';
+// 				drawSplash.style.display = 'none';
+// 			}, 20)
+// 		},100)
+// 	}
+// 	board[random_Play] = 2;
+// }
 
-function pointCheck() {
-	if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
-		return -1;
-	} else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
-		return -1;
+function checkWinner() {
 
-	} else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
-		return -1;
+	if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
+		return 10;	
 
-	} else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
-		return -1;
+	} else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
+		return 10;
 
-	} else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
-		return -1;
+	} else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
+		return 10;
 
-	} else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
-		return -1;
+	} else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
+		return 10;
 
-	} else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
-		return -1;
+	} else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
+		return 10;
 
-	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
-		return -1;
+	} else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
+		return 10;
 
 	} else if (numberofZeros == 0) {
 		return 0;
 
-	} else if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
-		return 1;
-		
-	} else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
-		return 1;
+	} else if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
+		return -10;
 
-	} else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
-		return 1;
+	} else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
+		return -10;
 
-	} else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
-		return 1;
+	} else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
+		return -10;
 
-	} else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
-		return 1;
+	} else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
+		return -10;
 
-	} else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
-		return 1;
+	} else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
+		return -10;
 
-	} else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
-		return 1;
+	} else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
+		return -10;
 
-	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
-		return 1;
+	} else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
+		return -10;
+
+	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
+		return -10;
 	}
 
-	return null;
+	return 999;
 }
 
 function ai_Play() {
 	numberofZeros = 0;
-	let best_MovePoints = -Infinity;
-	var best_Move = 3
 
-	for (let i = 0; i < board.length; i++) {
+	for (let i = 0; i < 9; i++) {
 		if (board[i] == 0) {
 			numberofZeros++;
 		}
@@ -463,74 +463,76 @@ function ai_Play() {
 	if (numberofZeros == 0) {
 		return;
 	}
-
-	for (let x = 0; x < 9; x++) {
-		if (board[x] == 0) {
-			board[x] = 2;
-			console.log('(Outermost-Ai_Play)Board Position: ' + x);
-			let movePoints = miniMax(board, 0, false);
-			console.log('(Outermost-Ai_Play)movePoints: ' + movePoints);
-			board[x] = 0;
-			if (movePoints > best_MovePoints) {
-				best_MovePoints = movePoints;
-				console.log('(Outermost-Ai_Play)Best Points changed to: ' + best_MovePoints);
-				best_Move = i;
-				console.log('Best Move Changed to: ' + x);
+	let bestScore = -Infinity;
+	let move;
+	for (let i = 0; i < 9; i++) {
+		if (board[i] == 0) {
+			board[i] = 2;
+			let score = minimax(board, 0, false);
+			board[i] = 0;
+			if (score > bestScore) {
+				bestScore = score;
+				move = i;
 			}
 		}
 	}
-	console.log('Final Best Move is: ' + i);
-	board[best_Move] = 2;
+
 	drawSplash.style.display = 'inline';
-		setTimeout(() => {
-			box[best_Move].innerHTML = o;
-			setTimeout (() => {
-				box[best_Move].children[0].style.transform = 'scale(5)';
-				drawSplash.style.display = 'none';
-			}, 20)
-		},100)
+	setTimeout(() => {
+		box[move].innerHTML = o;
+		setTimeout (() => {
+			box[move].children[0].style.transform = 'scale(5)';
+			drawSplash.style.display = 'none';
+		}, 20)
+	},100)
+	board[move] = 2;
 }
 
-function miniMax(board, depth, isMax) {
-	let resultPoint = pointCheck();
-	if (resultPoint == 1 || resultPoint == -1 || resultPoint == 0 ) {
-		return resultPoint;
+function minimax(board, depth, isMaximizing) {
+	let result = checkWinner();
+	if (result !== 999) {
+		return result;
 	}
 
-	if (isMax) {
-		let best_MovePoints = -Infinity;
-		for (let i = 0; i < board.length; i++) {
+	if (isMaximizing) {
+		let bestScore = -Infinity
+		for (let i = 0; i < 9; i++) {
 			if (board[i] == 0) {
 				board[i] = 2;
-				console.log('(Min)Board Position: ' + i);
-				let movePoints = miniMax(board, depth + 1, false);
-				console.log('(Min)movePoints: ' + movePoints);
+				let score = minimax(board, depth + 1, false);
 				board[i] = 0;
-				if (movePoints > best_MovePoints) {
-					best_MovePoints = movePoints;
-					console.log('(Min)Best Points changed to: ' + best_MovePoints);
-				}
+				bestScore = (Math.max(score, bestScore)) + (depth+1);
+				// if (score > bestScore) {
+				// 	bestScore = score;
+				// }
 			}
 		}
-		return best_MovePoints;
+		return bestScore;
 	} else {
-		let best_MovePoints = Infinity;
-		for (let i = 0; i < board.length; i++) {
+		let bestScore = Infinity
+		for (let i = 0; i < 9; i++) {
 			if (board[i] == 0) {
 				board[i] = 1;
-				console.log('(Max)Board Position: ' + i);
-				let movePoints = miniMax(board, depth + 1, true);
-				console.log('(Max)movePoints: ' + movePoints);
+				let score = minimax(board, depth + 1, true);
 				board[i] = 0;
-				if (movePoints < best_MovePoints) {
-					best_MovePoints = movePoints;
-					console.log('(Max)Best Points changed to: ' + best_MovePoints);
-				}
+
+				bestScore = (Math.min(score, bestScore)) - (depth+1);
+				// if (score < bestScore) {
+				// 	bestScore = score;
+				// }
 			}
 		}
-		return best_MovePoints;
+		return bestScore;
 	}
 }
+
+
+
+
+
+
+
+
 
 function signatureEasterEgg() {
 	signature.style.opacity = '0';
