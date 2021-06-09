@@ -65,7 +65,23 @@ function boardCheck() {
 		return;
 	}
 
-	ai_Play();
+	switch (mode) {
+		case 1:
+			ai_Play();
+			break;
+		
+		case 2:
+			random_Play();
+			break;
+
+		case 3:
+			
+			break;
+	
+		default:
+			console.log("Mode not selected");
+			break;
+	}
 
 	if (numberofZeros == 0) {
 		console.log('Draw');
@@ -582,6 +598,7 @@ const o = '<span class="material-icons" id="o">radio_button_unchecked</span>';
 var win = 0;
 var board = [0,0,0,0,0,0,0,0,0];
 var numberofZeros = 9;
+var mode = 1;
 
 box.forEach((box, index) => {
 box.addEventListener('click', () => {
