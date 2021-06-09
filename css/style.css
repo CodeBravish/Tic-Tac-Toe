@@ -32,7 +32,7 @@ body {
 #############*/
 header {
 	position: relative;
-	width: 20.5rem;
+	width: 22rem;
 	margin: 0 auto;
 	top: 2rem;
 	text-align: center;
@@ -82,7 +82,7 @@ p {
 #player-user {
 	text-align: right;
 	width: 6rem;
-	right: 0rem;
+	left: 2rem;
 	top: 14rem;
 	font-size: 2rem;
 }
@@ -108,7 +108,7 @@ p {
 #player-comp {
 	text-align: left;
 	width: 6rem;
-	left: 14.2rem;
+	left: 13.8rem;
 	bottom: 8.1rem;
 	font-size: 2rem;
 }

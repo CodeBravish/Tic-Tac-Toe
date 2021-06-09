@@ -1,11 +1,13 @@
 function boardCompute(x_Index) {
 	win = 0;
 	board[x_Index] = 1;
+	
+	boardCheck();
+
 	console.log('Board Array\n' 
 				+'['+ board[0] +']' +'['+ board[1] +']' +'['+ board[2] +']\n'
 				+'['+ board[3] +']' +'['+ board[4] +']' +'['+ board[5] +']\n'
 				+'['+ board[6] +']' +'['+ board[7] +']' +'['+ board[8] +']\n');
-	boardCheck();
 
 }
 
@@ -63,7 +65,7 @@ function boardCheck() {
 		return;
 	}
 
-	computer_Play();
+	ai_Play();
 
 	if (numberofZeros == 0) {
 		console.log('Draw');
@@ -353,7 +355,20 @@ function clear() {
 	board = [0,0,0,0,0,0,0,0,0]
 }
 
-function computer_Play() {
+
+
+
+
+
+
+
+
+
+// SECOND PLAYER
+
+// Random Computer Algoritm
+
+function random_Play() {
 	var random_Play = Math.floor(Math.random() * 9);
 	numberofZeros = 0;
 	let ntry = 1;
@@ -392,8 +407,156 @@ function computer_Play() {
 			}, 20)
 		},100)
 	}
-	board[random_Play] = 2
+	board[random_Play] = 2;
 }
+
+
+// Mini-Max Computer Algorithm
+
+function ai_Play() {
+	numberofZeros = 0;
+
+	for (let i = 0; i < 9; i++) {
+		if (board[i] == 0) {
+			numberofZeros++;
+		}
+	}
+	if (numberofZeros == 0) {
+		return;
+	}
+	let bestScore = -Infinity;
+	let move;
+	for (let i = 0; i < 9; i++) {
+		if (board[i] == 0) {
+			board[i] = 2;
+			let score = minimax(board, 0, false);
+			board[i] = 0;
+			if (score > bestScore) {
+				bestScore = score;
+				move = i;
+			}
+		}
+	}
+
+	drawSplash.style.display = 'inline';
+	setTimeout(() => {
+		box[move].innerHTML = o;
+		setTimeout (() => {
+			box[move].children[0].style.transform = 'scale(5)';
+			drawSplash.style.display = 'none';
+		}, 20)
+	},100)
+	board[move] = 2;
+}
+
+function minimax(vboard, depth, isMaximizing) {
+	let result = checkWinner();
+	if (result !== null) {
+		return result;
+	}
+
+	if (isMaximizing) {
+		let bestScore = -Infinity
+		for (let i = 0; i < 9; i++) {
+			if (vboard[i] == 0) {
+				vboard[i] = 2;
+				let score = minimax(vboard, depth + 1, false);
+				vboard[i] = 0;
+				score = score - depth;
+				bestScore = Math.max(score, bestScore);
+				// if (score > bestScore) {
+				// 	bestScore = score + depth;
+				// }
+			}
+		}
+		return bestScore;
+	} else if (!isMaximizing) {
+		let bestScore = Infinity
+		for (let i = 0; i < 9; i++) {
+			if (vboard[i] == 0) {
+				vboard[i] = 1;
+				let score = minimax(vboard, depth + 1, true);
+				vboard[i] = 0;
+				score = score + depth;
+				bestScore = Math.min(score, bestScore);
+				// if (score < bestScore) {
+				// 	bestScore = score + depth;
+				// }
+			}
+		}
+		return bestScore;
+	}
+}
+
+function checkWinner() {
+	numberofVirtualZeros = 0;
+
+	for (let i = 0; i < 9; i++) {
+		if (board[i] == 0) {
+			numberofVirtualZeros++;
+		}
+	}
+
+	if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
+		return 10;	
+
+	} else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
+		return 10;
+
+	} else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
+		return 10;
+
+	} else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
+		return 10;
+
+	} else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
+		return 10;
+
+	} else if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
+		return -10;
+
+	} else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
+		return -10;
+
+	} else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
+		return -10;
+
+	} else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
+		return -10;
+
+	} else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
+		return -10;
+
+	} else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
+		return -10;
+
+	} else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
+		return -10;
+
+	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
+		return -10;
+
+	} else if (numberofVirtualZeros == 0) {
+		return 0;
+	}
+
+	return null;
+}
+
+
+
+
+
+
 
 function signatureEasterEgg() {
 	signature.style.opacity = '0';
