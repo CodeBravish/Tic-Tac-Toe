@@ -1,11 +1,13 @@
 function boardCompute(x_Index) {
 	win = 0;
 	board[x_Index] = 1;
+	
+	boardCheck();
+
 	console.log('Board Array\n' 
 				+'['+ board[0] +']' +'['+ board[1] +']' +'['+ board[2] +']\n'
 				+'['+ board[3] +']' +'['+ board[4] +']' +'['+ board[5] +']\n'
 				+'['+ board[6] +']' +'['+ board[7] +']' +'['+ board[8] +']\n');
-	boardCheck();
 
 }
 
@@ -353,111 +355,63 @@ function clear() {
 	board = [0,0,0,0,0,0,0,0,0]
 }
 
-// function computer_Play() {
-// 	var random_Play = Math.floor(Math.random() * 9);
-// 	numberofZeros = 0;
-// 	let ntry = 1;
 
-// 	for (let i = 0; i < board.length; i++) {
-// 		if (board[i] == 0) {
-// 			numberofZeros++;
-// 		}
-// 	}
-// 	if (numberofZeros == 0) {
-// 		return;
-// 	}
-// 	if (board[random_Play] === 0) {
-// 		drawSplash.style.display = 'inline';
-// 		setTimeout(() => {
-// 			box[random_Play].innerHTML = o;
-// 			setTimeout (() => {
-// 				drawSplash.style.display = 'none';
-// 				box[random_Play].children[0].style.transform = 'scale(5)';
-// 			}, 20)
-// 		},100)
-// 		console.log('1st Try - Random Play: ' + random_Play);
-// 	} else {
-// 		while (board[random_Play] != 0) {
-// 			console.log('Used Number: ' + random_Play);
-// 			random_Play = Math.floor(Math.random() * 9);
-// 			ntry++;
-// 			console.log(ntry + ' Try - Random Play: ' + random_Play);
-// 		}
-// 		drawSplash.style.display = 'inline';
-// 		setTimeout(() => {
-// 			box[random_Play].innerHTML = o;
-// 			setTimeout (() => {
-// 				box[random_Play].children[0].style.transform = 'scale(5)';
-// 				drawSplash.style.display = 'none';
-// 			}, 20)
-// 		},100)
-// 	}
-// 	board[random_Play] = 2;
-// }
 
-function checkWinner() {
-	numberofVirtualZeros = 0;
 
-	for (let i = 0; i < 9; i++) {
+
+
+
+
+
+
+// SECOND PLAYER
+
+// Random Computer Algoritm
+
+function random_Play() {
+	var random_Play = Math.floor(Math.random() * 9);
+	numberofZeros = 0;
+	let ntry = 1;
+
+	for (let i = 0; i < board.length; i++) {
 		if (board[i] == 0) {
-			numberofVirtualZeros++;
+			numberofZeros++;
 		}
 	}
-
-	if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
-		return 10;	
-
-	} else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
-		return 10;
-
-	} else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
-		return 10;
-
-	} else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
-		return 10;
-
-	} else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
-		return 10;
-
-	} else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
-		return 10;
-
-	} else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
-		return 10;
-
-	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
-		return 10;
-
-	} else if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
-		return -10;
-
-	} else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
-		return -10;
-
-	} else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
-		return -10;
-
-	} else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
-		return -10;
-
-	} else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
-		return -10;
-
-	} else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
-		return -10;
-
-	} else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
-		return -10;
-
-	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
-		return -10;
-
-	} else if (numberofVirtualZeros == 0) {
-		return 0;
+	if (numberofZeros == 0) {
+		return;
 	}
-
-	return null;
+	if (board[random_Play] === 0) {
+		drawSplash.style.display = 'inline';
+		setTimeout(() => {
+			box[random_Play].innerHTML = o;
+			setTimeout (() => {
+				drawSplash.style.display = 'none';
+				box[random_Play].children[0].style.transform = 'scale(5)';
+			}, 20)
+		},100)
+		console.log('1st Try - Random Play: ' + random_Play);
+	} else {
+		while (board[random_Play] != 0) {
+			console.log('Used Number: ' + random_Play);
+			random_Play = Math.floor(Math.random() * 9);
+			ntry++;
+			console.log(ntry + ' Try - Random Play: ' + random_Play);
+		}
+		drawSplash.style.display = 'inline';
+		setTimeout(() => {
+			box[random_Play].innerHTML = o;
+			setTimeout (() => {
+				box[random_Play].children[0].style.transform = 'scale(5)';
+				drawSplash.style.display = 'none';
+			}, 20)
+		},100)
+	}
+	board[random_Play] = 2;
 }
+
+
+// Mini-Max Computer Algorithm
 
 function ai_Play() {
 	numberofZeros = 0;
@@ -534,7 +488,69 @@ function minimax(vboard, depth, isMaximizing) {
 	}
 }
 
+function checkWinner() {
+	numberofVirtualZeros = 0;
 
+	for (let i = 0; i < 9; i++) {
+		if (board[i] == 0) {
+			numberofVirtualZeros++;
+		}
+	}
+
+	if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
+		return 10;	
+
+	} else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
+		return 10;
+
+	} else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
+		return 10;
+
+	} else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
+		return 10;
+
+	} else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
+		return 10;
+
+	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
+		return 10;
+
+	} else if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
+		return -10;
+
+	} else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
+		return -10;
+
+	} else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
+		return -10;
+
+	} else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
+		return -10;
+
+	} else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
+		return -10;
+
+	} else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
+		return -10;
+
+	} else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
+		return -10;
+
+	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
+		return -10;
+
+	} else if (numberofVirtualZeros == 0) {
+		return 0;
+	}
+
+	return null;
+}
 
 
 
