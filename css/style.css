@@ -262,6 +262,11 @@ button:hover {
 	transform: scale(1.14);
 	z-index: 1000;
 	border-radius: 1rem;
+	cursor: default;
+}
+
+#hard-mode.active-mode {
+	color: #801d18;
 }
 
 
