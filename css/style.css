@@ -211,6 +211,73 @@ h2 {
 	/* transition-timing-function: cubic-bezier(0.04, 0.11, 0.46, 1.94); */
 }
 
+
+/*#############
+===============
+ SWITCH
+===============
+#############*/
+
+.switch {
+	margin: 0 auto;
+	margin-top: 1rem;
+}
+button {
+	width: 8rem;
+	height: 3rem;
+	font-size: 1.2rem;
+	color: #727272;
+	background-color: var(--line-color);
+	border: 0;
+	font-weight: 500;
+	transition: color 400ms, background-color 300ms, transform 100ms, border-radius 100ms;
+	z-index: -10;
+	cursor: pointer;
+	/* font-family: "mali"; */
+}
+
+button:first-child {
+	/* border-radius: 1rem 0 0 1rem; */
+	border-bottom-left-radius: 1rem;
+	border-top-left-radius: 1rem;
+	width: 7rem;
+}
+button:last-child {
+	/* border-radius: 0 1rem 1rem 0; */
+	border-bottom-right-radius: 1rem;
+	border-top-right-radius: 1rem;
+	width: 7rem;
+}
+
+button:hover {
+	/* color: var(--line-color); */
+	color: #000000;
+	background-color: #969696;
+	font-weight: 500;
+}
+
+.active-mode {
+	color: #000000;
+	background-color: #727272;
+	transform: scale(1.14);
+	z-index: 1000;
+	border-radius: 1rem;
+	cursor: default;
+}
+
+#hard-mode.active-mode {
+	color: #801d18;
+}
+
+
+
+/*#############
+===============
+ MEDIA QUERIES
+===============
+#############*/
+
+
 @media (max-width: 600px) {
 	header {
 		position: relative;
