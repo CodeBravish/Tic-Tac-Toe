@@ -632,6 +632,10 @@ easyMode.addEventListener('click', () => {
 	hardMode.classList.remove('active-mode');
 	normalMode.classList.remove('active-mode');
 	mode = 3;
+	console.log('Mode Switched: ' + mode);
+	clear()
+	userScore.innerText = 0
+	compScore.innerText = 0
 })
 
 normalMode.addEventListener('click', () => {
@@ -639,6 +643,10 @@ normalMode.addEventListener('click', () => {
 	hardMode.classList.remove('active-mode');
 	normalMode.classList.add('active-mode');
 	mode = 2;
+	console.log('Mode Switched: ' + mode);
+	clear()
+	userScore.innerText = 0
+	compScore.innerText = 0
 })
 
 hardMode.addEventListener('click', () => {
@@ -646,6 +654,10 @@ hardMode.addEventListener('click', () => {
 	hardMode.classList.add('active-mode');
 	normalMode.classList.remove('active-mode');
 	mode = 1;
+	console.log('Mode Switched: ' + mode);
+	clear()
+	userScore.innerText = 0
+	compScore.innerText = 0
 })
 
 title.addEventListener('click', () => {
