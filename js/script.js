@@ -383,6 +383,7 @@ function clear() {
 // Random Computer Algoritm
 
 function random_Play() {
+	console.log('Easy Mode Choice');
 	var randomPlay = Math.floor(Math.random() * 9);
 	numberofZeros = 0;
 	let ntry = 1;
@@ -452,11 +453,13 @@ function minMax_Play() {
 		}
 	}
 	if(mode == 2) {
+		console.log('Normal Mode Choice');
 		let randomChance = Math.floor(Math.random() * 9)
 		if (randomChance == 1 || randomChance == 8 || randomChance == 5) {
 			while (board[randomChance] != 0) {
 				randomChance = Math.floor(Math.random() * 9);
 			}
+			console.log('Normal Mode Random');
 			move = randomChance;
 		}
 	}
@@ -608,7 +611,7 @@ const o = '<span class="material-icons" id="o">radio_button_unchecked</span>';
 var win = 0;
 var board = [0,0,0,0,0,0,0,0,0];
 var numberofZeros = 9;
-var mode = 1;
+var mode = 2;
 
 normalMode.classList.add('active-mode');
 
