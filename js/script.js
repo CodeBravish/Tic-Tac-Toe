@@ -67,15 +67,13 @@ function boardCheck() {
 
 	switch (mode) {
 		case 1:
-			ai_Play();
+			minMax_Play();
 			break;
-		
 		case 2:
-			random_Play();
+			minMax_Play();
 			break;
-
 		case 3:
-			
+			random_Play();
 			break;
 	
 		default:
@@ -385,7 +383,7 @@ function clear() {
 // Random Computer Algoritm
 
 function random_Play() {
-	var random_Play = Math.floor(Math.random() * 9);
+	var randomPlay = Math.floor(Math.random() * 9);
 	numberofZeros = 0;
 	let ntry = 1;
 
@@ -397,39 +395,39 @@ function random_Play() {
 	if (numberofZeros == 0) {
 		return;
 	}
-	if (board[random_Play] === 0) {
+	if (board[randomPlay] === 0) {
 		drawSplash.style.display = 'inline';
 		setTimeout(() => {
-			box[random_Play].innerHTML = o;
+			box[randomPlay].innerHTML = o;
 			setTimeout (() => {
 				drawSplash.style.display = 'none';
-				box[random_Play].children[0].style.transform = 'scale(5)';
+				box[randomPlay].children[0].style.transform = 'scale(5)';
 			}, 20)
 		},100)
-		console.log('1st Try - Random Play: ' + random_Play);
+		console.log('1st Try - Random Play: ' + randomPlay);
 	} else {
-		while (board[random_Play] != 0) {
-			console.log('Used Number: ' + random_Play);
-			random_Play = Math.floor(Math.random() * 9);
+		while (board[randomPlay] != 0) {
+			console.log('Used Number: ' + randomPlay);
+			randomPlay = Math.floor(Math.random() * 9);
 			ntry++;
-			console.log(ntry + ' Try - Random Play: ' + random_Play);
+			console.log(ntry + ' Try - Random Play: ' + randomPlay);
 		}
 		drawSplash.style.display = 'inline';
 		setTimeout(() => {
-			box[random_Play].innerHTML = o;
+			box[randomPlay].innerHTML = o;
 			setTimeout (() => {
-				box[random_Play].children[0].style.transform = 'scale(5)';
+				box[randomPlay].children[0].style.transform = 'scale(5)';
 				drawSplash.style.display = 'none';
 			}, 20)
 		},100)
 	}
-	board[random_Play] = 2;
+	board[randomPlay] = 2;
 }
 
 
 // Mini-Max Computer Algorithm
 
-function ai_Play() {
+function minMax_Play() {
 	numberofZeros = 0;
 
 	for (let i = 0; i < 9; i++) {
@@ -453,7 +451,15 @@ function ai_Play() {
 			}
 		}
 	}
-
+	if(mode == 2) {
+		let randomChance = Math.floor(Math.random() * 9)
+		if (randomChance == 1 || randomChance == 8 || randomChance == 5) {
+			while (board[randomChance] != 0) {
+				randomChance = Math.floor(Math.random() * 9);
+			}
+			move = randomChance;
+		}
+	}
 	drawSplash.style.display = 'inline';
 	setTimeout(() => {
 		box[move].innerHTML = o;
@@ -561,7 +567,7 @@ function checkWinner() {
 	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
 		return -10;
 
-	} else if (numberofVirtualZeros == 0) {
+	} else if (numberofVirtualZeros == 0 && mode == 1) {
 		return 0;
 	}
 
@@ -592,6 +598,10 @@ var winType = 'NA';
 // const xStyle = document.getElementById('x');
 // const oStyle = document.getElementById('o');
 
+const easyMode = document.getElementById('easy-mode');
+const hardMode = document.getElementById('hard-mode');
+const normalMode = document.getElementById('normal-mode');
+
 const x = '<span class="material-icons" id="x">close</span>';
 const o = '<span class="material-icons" id="o">radio_button_unchecked</span>';
 
@@ -599,6 +609,8 @@ var win = 0;
 var board = [0,0,0,0,0,0,0,0,0];
 var numberofZeros = 9;
 var mode = 1;
+
+normalMode.classList.add('active-mode');
 
 box.forEach((box, index) => {
 box.addEventListener('click', () => {
@@ -610,6 +622,27 @@ box.addEventListener('click', () => {
 		boardCompute(index);
 	}
 })
+})
+
+easyMode.addEventListener('click', () => {
+	easyMode.classList.add('active-mode');
+	hardMode.classList.remove('active-mode');
+	normalMode.classList.remove('active-mode');
+	mode = 3;
+})
+
+normalMode.addEventListener('click', () => {
+	easyMode.classList.remove('active-mode');
+	hardMode.classList.remove('active-mode');
+	normalMode.classList.add('active-mode');
+	mode = 2;
+})
+
+hardMode.addEventListener('click', () => {
+	easyMode.classList.remove('active-mode');
+	hardMode.classList.add('active-mode');
+	normalMode.classList.remove('active-mode');
+	mode = 1;
 })
 
 title.addEventListener('click', () => {
