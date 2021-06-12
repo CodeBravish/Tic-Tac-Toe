@@ -624,7 +624,7 @@ setTimeout (() => {
 	box[5].innerHTML = '';
 	box[3].children[0].style.display = 'inline'
 	box[5].children[0].style.display = 'inline'
-}, 50)
+}, 100)
 
 normalMode.classList.add('active-mode');
 
