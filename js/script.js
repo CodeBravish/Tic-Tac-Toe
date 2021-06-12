@@ -452,17 +452,17 @@ function minMax_Play() {
 			}
 		}
 	}
-	// if(mode == 2) {
-	// 	console.log('Normal Mode Choice');
-	// 	let randomChance = Math.floor(Math.random() * 9)
-	// 	if (randomChance == 1 || randomChance == 8 || randomChance == 5) {
-	// 		while (board[randomChance] != 0) {
-	// 			randomChance = Math.floor(Math.random() * 9);
-	// 		}
-	// 		console.log('Normal Mode Random');
-	// 		move = randomChance;
-	// 	}
-	// }
+	if(mode == 2) {
+		console.log('Normal Mode Choice');
+		let randomChance = Math.floor(Math.random() * 9)
+		if (randomChance == 3 || randomChance == 6 || randomChance == 9) {
+			while (board[randomChance] != 0) {
+				randomChance = Math.floor(Math.random() * 9);
+			}
+			console.log('Normal Mode Random');
+			move = randomChance;
+		}
+	}
 	drawSplash.style.display = 'inline';
 	setTimeout(() => {
 		box[move].innerHTML = o;
@@ -570,7 +570,7 @@ function checkWinner() {
 	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
 		return -10;
 
-	} else if (numberofVirtualZeros == 0 && mode == 1) {
+	} else if (numberofVirtualZeros == 0) {
 		return 0;
 	}
 
