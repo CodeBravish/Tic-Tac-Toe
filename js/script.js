@@ -615,6 +615,21 @@ var mode = 2;
 
 normalMode.classList.add('active-mode');
 
+
+box[3].innerHTML = x;
+box[5].innerHTML = o;
+
+box[3].children[0].style.display = 'none'
+box[5].children[0].style.display = 'none'
+
+setTimeout (() => {
+	box[3].innerHTML = '';
+	box[5].innerHTML = '';
+	box[3].children[0].style.display = 'inline'
+	box[5].children[0].style.display = 'inline'
+}, 50)
+
+
 box.forEach((box, index) => {
 box.addEventListener('click', () => {
 	if (board[index] === 0) {
