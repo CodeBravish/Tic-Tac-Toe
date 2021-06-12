@@ -4,58 +4,58 @@ function boardCompute(x_Index) {
 	
 	boardCheck();
 
-	console.log('Board Array\n' 
-				+'['+ board[0] +']' +'['+ board[1] +']' +'['+ board[2] +']\n'
-				+'['+ board[3] +']' +'['+ board[4] +']' +'['+ board[5] +']\n'
-				+'['+ board[6] +']' +'['+ board[7] +']' +'['+ board[8] +']\n');
+	// console.log('Board Array\n' 
+	// 			+'['+ board[0] +']' +'['+ board[1] +']' +'['+ board[2] +']\n'
+	// 			+'['+ board[3] +']' +'['+ board[4] +']' +'['+ board[5] +']\n'
+	// 			+'['+ board[6] +']' +'['+ board[7] +']' +'['+ board[8] +']\n');
 
 }
 
 function boardCheck() {
 	if (board[0] == 1 && board[1] == 1 && board[2] == 1) {
-		console.log('Top Horizontal');
+		// console.log('Top Horizontal');
 		winType = 'TH';
 		userWin();
 		setTimeout(clear, 1000);
 		
 	} else if (board[3] == 1 && board[4] == 1 && board[5] == 1) {
-		console.log('Middle Horizontal');
+		// console.log('Middle Horizontal');
 		winType = 'MH';
 		userWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
-		console.log('Bottom Horizontal');
+		// console.log('Bottom Horizontal');
 		winType = 'BH';
 		userWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[0] == 1 && board[3] == 1 && board[6] == 1) {
-		console.log('Left Vertical');
+		// console.log('Left Vertical');
 		winType = 'LV';
 		userWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[1] == 1 && board[4] == 1 && board[7] == 1) {
-		console.log('Middle Vertical');
+		// console.log('Middle Vertical');
 		winType = 'MV';
 		userWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[2] == 1 && board[5] == 1 && board[8] == 1) {
-		console.log('Right Vertical');
+		// console.log('Right Vertical');
 		winType = 'RV';
 		userWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[0] == 1 && board[4] == 1 && board[8] == 1) {
-		console.log('Back Diagonal');
+		// console.log('Back Diagonal');
 		winType = 'BD';
 		userWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[2] == 1 && board[4] == 1 && board[6] == 1) {
-		console.log('Forward Diagonal');
+		// console.log('Forward Diagonal');
 		winType = 'FD';
 		userWin();
 		setTimeout(clear, 1000);
@@ -77,59 +77,59 @@ function boardCheck() {
 			break;
 	
 		default:
-			console.log("Mode not selected");
+			// console.log("Mode not selected");
 			break;
 	}
 
 	if (numberofZeros == 0) {
-		console.log('Draw');
+		// console.log('Draw');
 		winType = 'DRAW';
 		draw();
 		setTimeout(clear, 1000);
 	} else if (board[0] == 2 && board[1] == 2 && board[2] == 2) {
-		console.log('Top Horizontal');
+		// console.log('Top Horizontal');
 		winType = 'TH';
 		compWin();
 		setTimeout(clear, 1000);
 		
 	} else if (board[3] == 2 && board[4] == 2 && board[5] == 2) {
-		console.log('Middle Horizontal');
+		// console.log('Middle Horizontal');
 		winType = 'MH';
 		compWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[6] == 2 && board[7] == 2 && board[8] == 2) {
-		console.log('Bottom Horizontal');
+		// console.log('Bottom Horizontal');
 		winType = 'BH';
 		compWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[0] == 2 && board[3] == 2 && board[6] == 2) {
-		console.log('Left Vertical');
+		// console.log('Left Vertical');
 		winType = 'LV';
 		compWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[1] == 2 && board[4] == 2 && board[7] == 2) {
-		console.log('Middle Vertical');
+		// console.log('Middle Vertical');
 		winType = 'MV';
 		compWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[2] == 2 && board[5] == 2 && board[8] == 2) {
-		console.log('Right Vertical');
+		// console.log('Right Vertical');
 		winType = 'RV';
 		compWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[0] == 2 && board[4] == 2 && board[8] == 2) {
-		console.log('Back Diagonal');
+		// console.log('Back Diagonal');
 		winType = 'BD';
 		compWin();
 		setTimeout(clear, 1000);
 
 	} else if (board[2] == 2 && board[4] == 2 && board[6] == 2) {
-		console.log('Forward Diagonal');
+		// console.log('Forward Diagonal');
 		winType = 'FD';
 		compWin();
 		setTimeout(clear, 1000);
@@ -383,7 +383,7 @@ function clear() {
 // Random Computer Algoritm
 
 function random_Play() {
-	console.log('Easy Mode Choice');
+	// console.log('Easy Mode Choice');
 	var randomPlay = Math.floor(Math.random() * 9);
 	numberofZeros = 0;
 	let ntry = 1;
@@ -405,13 +405,13 @@ function random_Play() {
 				box[randomPlay].children[0].style.transform = 'scale(5)';
 			}, 20)
 		},100)
-		console.log('1st Try - Random Play: ' + randomPlay);
+		// console.log('1st Try - Random Play: ' + randomPlay);
 	} else {
 		while (board[randomPlay] != 0) {
-			console.log('Used Number: ' + randomPlay);
+			// console.log('Used Number: ' + randomPlay);
 			randomPlay = Math.floor(Math.random() * 9);
 			ntry++;
-			console.log(ntry + ' Try - Random Play: ' + randomPlay);
+			// console.log(ntry + ' Try - Random Play: ' + randomPlay);
 		}
 		drawSplash.style.display = 'inline';
 		setTimeout(() => {
@@ -453,13 +453,13 @@ function minMax_Play() {
 		}
 	}
 	if(mode == 2) {
-		console.log('Normal Mode Choice');
+		// console.log('Normal Mode Choice');
 		let randomChance = Math.floor(Math.random() * 9)
-		if (randomChance == 3 || randomChance == 6 || randomChance == 9) {
+		if (randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9)) {
 			while (board[randomChance] != 0) {
 				randomChance = Math.floor(Math.random() * 9);
 			}
-			console.log('Normal Mode Random');
+			// console.log('Normal Mode Random');
 			move = randomChance;
 		}
 	}
@@ -613,6 +613,11 @@ var board = [0,0,0,0,0,0,0,0,0];
 var numberofZeros = 9;
 var mode = 2;
 
+box[3].innerHTML = x;
+box[3].innerHTML = '';
+box[5].innerHTML = o;
+box[5].innerHTML = '';
+
 normalMode.classList.add('active-mode');
 
 box.forEach((box, index) => {
@@ -632,7 +637,7 @@ easyMode.addEventListener('click', () => {
 	hardMode.classList.remove('active-mode');
 	normalMode.classList.remove('active-mode');
 	mode = 3;
-	console.log('Mode Switched: ' + mode);
+	// console.log('Mode Switched: ' + mode);
 	clear()
 	userScore.innerText = 0
 	compScore.innerText = 0
@@ -643,7 +648,7 @@ normalMode.addEventListener('click', () => {
 	hardMode.classList.remove('active-mode');
 	normalMode.classList.add('active-mode');
 	mode = 2;
-	console.log('Mode Switched: ' + mode);
+	// console.log('Mode Switched: ' + mode);
 	clear()
 	userScore.innerText = 0
 	compScore.innerText = 0
@@ -654,7 +659,7 @@ hardMode.addEventListener('click', () => {
 	hardMode.classList.add('active-mode');
 	normalMode.classList.remove('active-mode');
 	mode = 1;
-	console.log('Mode Switched: ' + mode);
+	// console.log('Mode Switched: ' + mode);
 	clear()
 	userScore.innerText = 0
 	compScore.innerText = 0
