@@ -455,7 +455,7 @@ function minMax_Play() {
 	if(mode == 2) {
 		// console.log('Normal Mode Choice');
 		let randomChance = Math.floor(Math.random() * 9)
-		if (randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9)) {
+		if (randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9) || randomChance == Math.floor(Math.random() * 9))  {
 			while (board[randomChance] != 0) {
 				randomChance = Math.floor(Math.random() * 9);
 			}
