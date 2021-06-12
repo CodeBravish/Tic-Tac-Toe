@@ -620,10 +620,10 @@ box[3].children[0].style.opacity = '0'
 box[5].children[0].style.opacity = '0'
 
 setTimeout (() => {
-	box[3].innerHTML = '';
-	box[5].innerHTML = '';
 	box[3].children[0].style.opacity = '1'
 	box[5].children[0].style.opacity = '1'
+	box[3].innerHTML = '';
+	box[5].innerHTML = '';
 }, 100)
 
 normalMode.classList.add('active-mode');
