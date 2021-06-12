@@ -614,9 +614,17 @@ var numberofZeros = 9;
 var mode = 2;
 
 box[3].innerHTML = x;
-box[3].innerHTML = '';
 box[5].innerHTML = o;
-box[5].innerHTML = '';
+
+box[3].children[0].style.display = 'none'
+box[5].children[0].style.display = 'none'
+
+setTimeout (() => {
+	box[3].innerHTML = '';
+	box[5].innerHTML = '';
+	box[3].children[0].style.display = 'inline'
+	box[5].children[0].style.display = 'inline'
+}, 50)
 
 normalMode.classList.add('active-mode');
 
