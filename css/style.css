@@ -8,7 +8,6 @@ body {
 	width: 100%;
 	background-color: #202020;
 	font-family: 'Pacifico', cursive;
-	/* font-family: 'Lobster', cursive; */
 	font-size: 2.5rem;
 	color: #ffffff;
 	font-style: italic;
@@ -46,7 +45,7 @@ header {
 
 #signature {
 	position: relative;
-	font-family: mali;
+	font-family: 'mali';
 	font-weight: 700;
 	opacity: 0;
 	text-align: left;
@@ -54,8 +53,6 @@ header {
 	bottom: 3.3rem;
 	left: 0.5rem;
 	z-index: 500;
-	/* display: none; */
-	/* transition-duration: 500ms; */
 	transition: opacity 500ms, bottom 500ms;
 }
 
@@ -95,7 +92,6 @@ p {
 
 #hyphen {
 	font-size: 5rem;
-	/* left: 46%; */
 }
 
 #comp-score {
@@ -149,7 +145,6 @@ p {
 	width: 9rem;
 	height: 9rem;
 
-	/* height: 10rem; */
 	text-align: center;
 	cursor: pointer;
 	font-size: 0;
@@ -180,10 +175,6 @@ h2 {
 	padding: 7rem 4rem;
 }
 
-/* #draw {
-	display: inline;
-	opacity: 100;
-} */
 
 /*#############
 ===============
@@ -196,8 +187,6 @@ h2 {
 	position: relative;
 	top: 3.8rem;
 	transform: scale(4.2);
-	/* transition-duration: 300ms;
-	transition-timing-function: cubic-bezier(0.04, 0.11, 0.46, 1.94) */
 	transition: opacity 300ms ease, transform 300ms cubic-bezier(0.04, 0.11, 0.46, 1.94);
 }
 
@@ -206,10 +195,71 @@ h2 {
 	position: relative;
 	top: 3.8rem;
 	transform: scale(5.2);
-	/* transition-duration: 300ms; */
 	transition: opacity 300ms ease, transform 300ms cubic-bezier(0.04, 0.11, 0.46, 1.94);
-	/* transition-timing-function: cubic-bezier(0.04, 0.11, 0.46, 1.94); */
 }
+
+
+/*#############
+===============
+ SWITCH
+===============
+#############*/
+
+.switch {
+	margin: 0 auto;
+	margin-top: 1rem;
+}
+button {
+	width: 8rem;
+	height: 3rem;
+	font-size: 1.2rem;
+	color: #727272;
+	background-color: var(--line-color);
+	border: 0;
+	font-weight: 500;
+	transition: color 400ms, background-color 300ms, transform 100ms, border-radius 100ms;
+	z-index: -10;
+	cursor: pointer;
+}
+
+button:first-child {
+	border-bottom-left-radius: 1rem;
+	border-top-left-radius: 1rem;
+	width: 7rem;
+}
+button:last-child {
+	border-bottom-right-radius: 1rem;
+	border-top-right-radius: 1rem;
+	width: 7rem;
+}
+
+button:hover {
+	color: #000000;
+	background-color: #969696;
+	font-weight: 500;
+}
+
+.active-mode {
+	color: #000000;
+	background-color: #727272;
+	transform: scale(1.14);
+	z-index: 1000;
+	border-radius: 1rem;
+	cursor: default;
+}
+
+#hard-mode.active-mode {
+	color: #801d18;
+}
+
+
+
+/*#############
+===============
+ MEDIA QUERIES
+===============
+#############*/
+
 
 @media (max-width: 600px) {
 	header {
@@ -237,7 +287,6 @@ h2 {
 		color: #727272;
 		position: relative;
 		top: 2.8rem;
-		/* transform: scale(4); */
 		font-size: 1.25rem;
 	}
 	
@@ -245,13 +294,12 @@ h2 {
 		color: #727272;
 		position: relative;
 		top: 2.8rem;
-		/* transform: scale(5.2); */
 		font-size: 1.35rem;
 		transition-duration: 300ms;
 	}
 }
 
-@media (max-height: 770px) {
+@media (max-height: 800px) {
 	.score {
 		height: 4rem;
 		bottom: 13rem;
@@ -270,7 +318,6 @@ h2 {
 		color: #727272;
 		position: relative;
 		top: 2.8rem;
-		/* transform: scale(4); */
 		font-size: 1.25rem;
 	}
 	
@@ -278,18 +325,20 @@ h2 {
 		color: #727272;
 		position: relative;
 		top: 2.8rem;
-		/* transform: scale(5.2); */
 		font-size: 1.35rem;
 		transition-duration: 300ms;
 	}
 }
 
-@media (max-width: 370px) {
-	* {
+@media (max-width: 380px) {
+	*:not(button) {
 		transform: scale(0.95);
 	}
 	header {
 		right: 0.3rem;
+	}
+	h2 {
+		top: 0rem;
 	}
 	#x {
 		transform: scale(0);
@@ -297,4 +346,6 @@ h2 {
 	#o {
 		transform: scale(5.2);
 	}
+
+	
 }
